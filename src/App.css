@@ -19,6 +19,12 @@ body > div,
 form {
   height: inherit;
 }
+button {
+  border: 0;
+}
+button:hover {
+  cursor: pointer;
+}
 input {
   border: 1px solid #525557;
   font-size: 14px;
@@ -134,7 +140,7 @@ main {
   background-size: 100%;
   background-repeat: repeat;
   display: block;
-  background-color: #000;
+  background-color: #151718;
   height: 100vh;
   display: flex;
   flex-direction: column;
