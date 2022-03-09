@@ -116,6 +116,17 @@ function App() {
   };
 
   React.useEffect(() => {
+    const data = localStorage.getItem("page-set");
+    if (data) {
+      setPage(JSON.parse(data));
+    }
+  }, []);
+
+  React.useEffect(() => {
+    localStorage.setItem("page-set", JSON.stringify(startPage));
+  });
+
+  React.useEffect(() => {
     isOkThree();
   });
 

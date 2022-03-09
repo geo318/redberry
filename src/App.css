@@ -35,7 +35,10 @@ input {
   width: 455px;
   margin: 0 auto;
 }
-
+h1,
+h2 {
+  font-weight: 400;
+}
 h2 {
   font-family: "Rowdies", Arial, sans-serif;
   font-size: 64px;
@@ -115,7 +118,7 @@ input:focus {
 
 .block-right:after {
   content: "";
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
   bottom: 0;
@@ -292,6 +295,7 @@ form > div:after {
   }
   .block-right::after {
     content: "";
+    position: absolute;
     left: 0;
   }
   .page-wrap {
