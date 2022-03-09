@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 const error_num = "should include 3 or more characters";
 const error_mail = "unvalid Email";
 const error_number = "unvalid number";
@@ -61,7 +61,7 @@ function Input(props) {
 function Dots(props) {
   let len = props.cur;
   let dots = [];
-  for (let i = 0; i < props.len; i++) {
+  for (let i = 0; i < props.len - 1; i++) {
     dots.push(
       <button
         className={`dot ${len > i ? "complete" : ""}`}
@@ -84,7 +84,9 @@ function Welcome(props) {
           <h1>Welcome Rocketeer !</h1>
           <div className="Welcome">
             <button onClick={props.f}>Start Questionnaire</button>
-            <button className="nostyle">Submitted Applications</button>
+            <button onClick={props.s} className="nostyle">
+              Submitted Applications
+            </button>
           </div>
           <div
             className="rocket"

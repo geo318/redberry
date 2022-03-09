@@ -1,14 +1,14 @@
 import "./App.css";
-import { Input, Dots, Welcome, Thankyou } from "./components";
+import { Dots, Welcome, Thankyou } from "./components";
 import React, { useState, useEffect } from "react";
 import { PageOne } from "./page1.js";
 import { PageTwo } from "./page2";
 import { PageThree } from "./page3";
 import { PageFour } from "./page4";
+import { Submit } from "./submits.js";
 
 function App() {
   const [startPage, setPage] = useState(0);
-  const [placeHold, placeFill] = useState("");
 
   const pageOneVals = { first_name: "", last_name: "", email: "", phone: "" };
   const [oneFormData, setOneFormData] = useState(pageOneVals);
@@ -36,10 +36,8 @@ function App() {
   const [turnFour, setTurnFour] = useState("0");
   const [fourFormData, setFourFormData] = useState(pageFourVals);
 
-  let x = document.getElementsByClassName("input");
-
   const ComponentArr = [
-    <Welcome f={next} />,
+    <Welcome f={next} s={() => setPage(6)} />,
     <PageOne
       ObjOne={oneFormData}
       setObjOne={setOneFormData}
@@ -53,7 +51,8 @@ function App() {
     />,
     <PageThree ObjThree={threeFormData} setObjThree={setThreeFormData} />,
     <PageFour ObjFour={fourFormData} setObjFour={setFourFormData} />,
-    <Thankyou />
+    <Thankyou />,
+    <Submit />
   ];
   const handleSubmit1 = (e) => {
     setFormError1(validate(oneFormData));
@@ -167,7 +166,7 @@ function App() {
   }
 
   function clickDot(i) {
-    if (i < ComponentArr.length)
+    if (i < ComponentArr.length - 2)
       switch (i) {
         case 2:
           return Object.values(validate(oneFormData)).length === 0
