@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 const error_num = "should include 3 or more characters";
 const error_mail = "unvalid Email";
 const error_number = "unvalid number";
@@ -77,10 +76,12 @@ function Dots(props) {
 function Welcome() {
   return (
     <>
-      <h1>Welcome Rocketeer !</h1>
-      <div className="Welcome">
-        <code>Hooray!</code>
-      </div>
+      <main>
+        <h1>Welcome Rocketeer !</h1>
+        <div className="Welcome">
+          <code>Hooray!</code>
+        </div>
+      </main>
     </>
   );
 }

@@ -127,12 +127,26 @@ input:focus {
   display: flex;
 }
 
-form {
+form > div {
   display: grid;
 }
 
-form:before,
-form:after {
+body {
+  background: #111;
+  background-image: url("./stars.png");
+}
+main {
+  background-size: 1000px;
+  background-repeat: repeat;
+  display: block;
+}
+
+main ~ .page-wrap {
+  /* display: none; */
+}
+
+form > div:before,
+form > div:after {
   content: "";
   /*adds pseudo element on top and aligns form content in the middle automatically*/
 }
