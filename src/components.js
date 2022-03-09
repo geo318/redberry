@@ -74,7 +74,7 @@ function Dots(props) {
   return <div className="dots">{dots}</div>;
 }
 
-function Welcome() {
+function Welcome(props) {
   return (
     <>
       <div className="main_back">
@@ -83,7 +83,7 @@ function Welcome() {
         >
           <h1>Welcome Rocketeer !</h1>
           <div className="Welcome">
-            <button>Start Questionnaire</button>
+            <button onClick={props.f}>Start Questionnaire</button>
             <button className="nostyle">Submitted Applications</button>
           </div>
           <div

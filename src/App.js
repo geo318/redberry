@@ -39,7 +39,7 @@ function App() {
   let x = document.getElementsByClassName("input");
 
   const ComponentArr = [
-    <Welcome />,
+    <Welcome f={next} />,
     <PageOne
       ObjOne={oneFormData}
       setObjOne={setOneFormData}
