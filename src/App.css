@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+input {
+  border: 1px solid #000;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 20px 60px;
+  width: 455px;
+}
+
+.input-wrap > div {
+  margin-bottom: 57px;
+}
