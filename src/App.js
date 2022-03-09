@@ -170,51 +170,38 @@ function App() {
   }
 
   return (
-    <>
-      <div className="App">
-        <>{ComponentArr[startPage]}</>
-      </div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-      >
-        <button onClick={prev}>prev</button>
-        <Dots
-          f={(i) => {
-            clickDot(i);
-            handleSubmit2();
-            handleSubmit1();
+    <div>
+      <div className="main">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
           }}
-          len={ComponentArr.length}
-        />
-        <button
-          onClick={(e) => {
-            submitIf(e);
-            next();
-            isOkThree();
-          }}
-          id="next"
         >
-          next
-        </button>
-      </form>
-    </>
+          <div>{ComponentArr[startPage]}</div>
+
+          <button onClick={prev}>prev</button>
+          <Dots
+            f={(i) => {
+              clickDot(i);
+              handleSubmit2();
+              handleSubmit1();
+            }}
+            len={ComponentArr.length}
+          />
+          <button
+            onClick={(e) => {
+              submitIf(e);
+              next();
+              isOkThree();
+            }}
+            id="next"
+          >
+            next
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }
-
-// function PageSet(props) {
-//   return (
-//     <div className = "PageSet">
-//       <p>
-//         <code>middle page!</code>
-//       </p>
-//       <Input place = "First Name" check = {2} r = {'required'} set={props.placeFill} val = {props.val}/>
-//       <Input place = "Last Name" check = {2} r = {'required'} set={props.placeFill} val = {props.val} />
-//       <Input place = "E Mail" check = {emailRGX} r = {'required'} set={props.placeFill} val = {props.val}/>
-//       <Input place = "+995 5__ __ __ __" check = {phoneRGX} set={props.placeFill} val = {props.val}/>
-//     </div>
-//   );
-// }
 
 export default App;
