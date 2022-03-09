@@ -76,11 +76,16 @@ function Dots(props) {
 function Welcome() {
   return (
     <>
-      <main>
+      <main style={{ backgroundImage: "url(" + require("./stars.png") + ")" }}>
         <h1>Welcome Rocketeer !</h1>
         <div className="Welcome">
-          <code>Hooray!</code>
+          <button>Start Questionnaire</button>
+          <button className="nostyle">Submitted Applications</button>
         </div>
+        <div
+          className="rocket"
+          style={{ backgroundImage: "url(" + require("./rocketman.png") + ")" }}
+        ></div>
       </main>
     </>
   );

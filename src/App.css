@@ -130,15 +130,44 @@ input:focus {
 form > div {
   display: grid;
 }
-
-body {
-  background: #111;
-  background-image: url("./stars.png");
-}
 main {
-  background-size: 1000px;
+  background-size: 100%;
   background-repeat: repeat;
   display: block;
+  background-color: #000;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main button {
+  border: 0;
+  background: var(--red);
+  color: #fff;
+  height: 80px;
+  width: 395px;
+  font-size: 24px;
+  border-radius: 60px;
+}
+.Welcome {
+  margin-top: 140px;
+  display: flex;
+  flex-direction: column;
+}
+.nostyle {
+  background: none;
+  text-decoration: underline;
+}
+.rocket {
+  background-size: 400px;
+  width: 400px;
+  height: 400px;
+}
+main h1 {
+  margin: 0;
+  color: var(--red);
+  font-size: 96px;
 }
 
 main ~ .page-wrap {
