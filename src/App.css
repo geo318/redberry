@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Rowdies&display=swap");
 :root {
   --red: #fe3b1f;
 }
@@ -137,15 +139,17 @@ form > div {
   display: grid;
 }
 main {
-  background-size: 100%;
+  background-size: 80%;
   background-repeat: repeat;
   display: block;
-  background-color: #151718;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.main_back {
+  background-image: radial-gradient(#0c0d0e 0%, #151718 73.44%);
 }
 main button {
   border: 0;
@@ -174,6 +178,7 @@ main h1 {
   margin: 0;
   color: var(--red);
   font-size: 96px;
+  font-family: "Rowdies", Arial, sans-serif;
 }
 
 main ~ .page-wrap {
