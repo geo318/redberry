@@ -177,27 +177,26 @@ function App() {
             e.preventDefault();
           }}
         >
-          <div>{ComponentArr[startPage]}</div>
-
-          <button onClick={prev}>prev</button>
-          <Dots
-            f={(i) => {
-              clickDot(i);
-              handleSubmit2();
-              handleSubmit1();
-            }}
-            len={ComponentArr.length}
-          />
-          <button
-            onClick={(e) => {
-              submitIf(e);
-              next();
-              isOkThree();
-            }}
-            id="next"
-          >
-            next
-          </button>
+          <>{ComponentArr[startPage]}</>
+          <div className="page-wrap">
+            <button onClick={prev}></button>
+            <Dots
+              f={(i) => {
+                clickDot(i);
+                handleSubmit2();
+                handleSubmit1();
+              }}
+              len={ComponentArr.length}
+            />
+            <button
+              onClick={(e) => {
+                submitIf(e);
+                next();
+                isOkThree();
+              }}
+              id="next"
+            ></button>
+          </div>
         </form>
       </div>
     </div>
