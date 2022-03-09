@@ -266,7 +266,12 @@ form > div:after {
   width: 50px;
   margin-right: 35px;
 }
-
+.pn {
+  margin: 0 7.5px;
+}
+.pn:hover {
+  cursor: pointer;
+}
 @media only screen and (max-width: 1000px) {
   body {
     height: auto;

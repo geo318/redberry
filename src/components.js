@@ -59,11 +59,12 @@ function Input(props) {
 }
 
 function Dots(props) {
+  let len = props.cur;
   let dots = [];
   for (let i = 0; i < props.len; i++) {
     dots.push(
       <button
-        className="dot"
+        className={`dot ${len > i ? "complete" : ""}`}
         id={i}
         key={i}
         onClick={() => props.f(i)}
