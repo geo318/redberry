@@ -183,7 +183,36 @@ form:after {
   border: 0;
   background: var(--red);
   color: #fff;
+  margin-bottom: 56px;
 }
+.skillset button:hover {
+  cursor: pointer;
+}
+
+.skillsSelected {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #525557;
+  height: 48px;
+  align-items: center;
+}
+.skillsSelected > div:last-child {
+  margin-right: 15px;
+}
+.skillsSelected > div:last-child:hover {
+  cursor: pointer;
+}
+.skillsSelected > div:nth-child(2) {
+  flex-grow: 1;
+  text-align: left;
+}
+.skillsSelected > div:first-child {
+  margin-left: 17px;
+  font-style: italic;
+  width: 50px;
+  margin-right: 35px;
+}
+
 @media only screen and (max-width: 1000px) {
   body {
     height: auto;
