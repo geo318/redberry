@@ -172,7 +172,7 @@ function App() {
     if (
       startPage !== ComponentArr.length - 3 &&
       startPage !== ComponentArr.length - 2 &&
-      startPage !== ComponentArr.length - 1 &&
+      //startPage !== ComponentArr.length - 1 &&
       startPage !== 0
     ) {
       return (
