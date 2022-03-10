@@ -8,11 +8,6 @@ function Input(props) {
   const [error, errorToggle] = useState("");
   const errors = [error_num, error_num, error_mail, error_number];
 
-  const errorSet = () => {
-    return errorToggle((error) =>
-      control(props.check) !== "ok" ? (error = "error") : ""
-    );
-  };
   const changeControl = (e) => {
     placeFill(e.target.value);
     //localStorage.setItem("inputValue", e.target.value);
@@ -30,8 +25,6 @@ function Input(props) {
     }
   }
 
-  document.getElementById("next").addEventListener("click", () => errorSet());
-  document.getElementById("1").addEventListener("click", () => errorSet());
   let name = props.place;
   return (
     <div className="input_group">
