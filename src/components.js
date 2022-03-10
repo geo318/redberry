@@ -3,54 +3,6 @@ const error_num = "should include 3 or more characters";
 const error_mail = "unvalid Email";
 const error_number = "unvalid number";
 
-function Input(props) {
-  const [placeHold, placeFill] = useState("");
-  const [error, errorToggle] = useState("");
-  const errors = [error_num, error_num, error_mail, error_number];
-
-  const changeControl = (e) => {
-    placeFill(e.target.value);
-    //localStorage.setItem("inputValue", e.target.value);
-  };
-  function control(x) {
-    let len = placeHold.split("");
-    if (x >= 0) {
-      return len.length < x && len.length > 0
-        ? "less"
-        : len.length === 0
-        ? "empty"
-        : "ok";
-    } else if (x instanceof RegExp) {
-      return x.test(placeHold) ? "ok" : "empty";
-    }
-  }
-
-  let name = props.place;
-  return (
-    <div className="input_group">
-      <input
-        placeholder={name}
-        value={placeHold}
-        name={name.replace(" ", "_")}
-        onFocus={(e) => {
-          errorSet();
-        }}
-        onChange={(e) => {
-          changeControl(e);
-          errorSet();
-        }}
-        onBlur={(e) => {
-          changeControl(e);
-          errorSet();
-        }}
-        className={`input ${control(props.check)}`}
-        required={props.r}
-      />
-      <div className="error">{error}</div>
-    </div>
-  );
-}
-
 function Dots(props) {
   let len = props.cur;
   let dots = [];
@@ -135,4 +87,4 @@ function Thankyou(props) {
   );
 }
 
-export { Dots, Welcome, Thankyou, Input };
+export { Dots, Welcome, Thankyou };
