@@ -170,7 +170,6 @@ function App() {
 
   const paginator = () => {
     if (
-      startPage !== ComponentArr.length - 4 &&
       startPage !== ComponentArr.length - 3 &&
       startPage !== ComponentArr.length - 2 &&
       startPage !== ComponentArr.length - 1 &&
