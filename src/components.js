@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 const error_num = "should include 3 or more characters";
 const error_mail = "unvalid Email";
 const error_number = "unvalid number";
@@ -61,7 +61,7 @@ function Input(props) {
 function Dots(props) {
   let len = props.cur;
   let dots = [];
-  for (let i = 0; i < props.len - 1; i++) {
+  for (let i = 0; i < props.len - 4; i++) {
     dots.push(
       <button
         className={`dot ${len > i ? "complete" : ""}`}
@@ -100,14 +100,43 @@ function Welcome(props) {
   );
 }
 
-function Thankyou() {
+function Thankyou(props) {
+  const [state, setState] = useState("");
+  setTimeout(props.s, 3000);
+
+  const data1 = localStorage.getItem("page-one");
+  const data2 = localStorage.getItem("page-two");
+  const data3 = localStorage.getItem("page-three");
+  const data4 = localStorage.getItem("page-four");
+  const dataSet = {
+    ...JSON.parse(data1),
+    ...JSON.parse(data2),
+    ...JSON.parse(data3),
+    ...JSON.parse(data4)
+  };
+
+  React.useEffect(() => {
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json"
+      },
+      body: JSON.stringify(dataSet)
+    };
+
+    fetch("https://bootcamp-2022.devtest.ge/api/application", requestOptions)
+      .then((response) => response.json())
+      .then((data) => setState({ postId: data.id }));
+  });
   return (
     <>
-      <h2>Thanks for Joining 😊</h2>
-      <div className="thankyou">
-        <p>
-          <code>thanks!</code>
-        </p>
+      <div className="main_back">
+        <main>
+          <div className="Welcome">
+            <h1>Thanks for Joining 😊</h1>
+          </div>
+        </main>
       </div>
     </>
   );

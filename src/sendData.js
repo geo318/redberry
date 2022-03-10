@@ -6,10 +6,11 @@ xhr.open("POST", url);
 xhr.setRequestHeader("Content-Type", "application/json");
 
 xhr.onreadystatechange = function () {
-   if (xhr.readyState === 4) {
-      console.log(xhr.status);
-      console.log(xhr.responseText);
-   }};
+  if (xhr.readyState === 4) {
+    console.log(xhr.status);
+    console.log(xhr.responseText);
+  }
+};
 
 var data = `{
   "token": "8fe41587-868f-4abc-8c84-8bb375df1cdd",
@@ -32,6 +33,5 @@ var data = `{
   "devtalk_topic": "I would ...",
   "something_special": "I am special!"
 }`;
-
 
 xhr.send(data);

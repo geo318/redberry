@@ -27,7 +27,11 @@ button {
 button:hover {
   cursor: pointer;
 }
-input {
+textarea {
+  resize: none;
+}
+input,
+textarea {
   border: 1px solid #525557;
   font-size: 14px;
   line-height: 14px;
@@ -274,6 +278,13 @@ form > div:after {
 }
 .pn:hover {
   cursor: pointer;
+}
+
+.radio-wrap {
+  text-align: unset;
+  max-width: 455px;
+  margin: 0 auto;
+  margin-bottom: 100px;
 }
 @media only screen and (max-width: 1000px) {
   body {

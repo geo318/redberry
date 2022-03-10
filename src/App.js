@@ -5,7 +5,7 @@ import { PageOne } from "./page1.js";
 import { PageTwo } from "./page2";
 import { PageThree } from "./page3";
 import { PageFour } from "./page4";
-import { Submit } from "./submits.js";
+import { Submitted, Submit } from "./submits.js";
 
 function App() {
   const [startPage, setPage] = useState(0);
@@ -37,7 +37,7 @@ function App() {
   const [fourFormData, setFourFormData] = useState(pageFourVals);
 
   const ComponentArr = [
-    <Welcome f={next} s={() => setPage(6)} />,
+    <Welcome f={next} s={() => setPage(7)} />,
     <PageOne
       ObjOne={oneFormData}
       setObjOne={setOneFormData}
@@ -51,8 +51,9 @@ function App() {
     />,
     <PageThree ObjThree={threeFormData} setObjThree={setThreeFormData} />,
     <PageFour ObjFour={fourFormData} setObjFour={setFourFormData} />,
-    <Thankyou />,
-    <Submit />
+    <Submit n={next} p={prev} />,
+    <Thankyou s={() => setPage(0)} />,
+    <Submitted />
   ];
   const handleSubmit1 = (e) => {
     setFormError1(validate(oneFormData));
@@ -128,18 +129,6 @@ function App() {
   React.useEffect(() => {
     isOkThree();
   });
-
-  const data1 = localStorage.getItem("page-one");
-  const data2 = localStorage.getItem("page-two");
-  const data3 = localStorage.getItem("page-three");
-  const data4 = localStorage.getItem("page-four");
-  console.log({
-    ...JSON.parse(data1),
-    ...JSON.parse(data2),
-    ...JSON.parse(data3),
-    ...JSON.parse(data4)
-  });
-
   function next() {
     setPage((prev) => {
       if (prev < ComponentArr.length - 1) {
@@ -180,7 +169,13 @@ function App() {
   }
 
   const paginator = () => {
-    if (startPage !== ComponentArr.length && startPage !== 0) {
+    if (
+      startPage !== ComponentArr.length - 4 &&
+      startPage !== ComponentArr.length - 3 &&
+      startPage !== ComponentArr.length - 2 &&
+      startPage !== ComponentArr.length - 1 &&
+      startPage !== 0
+    ) {
       return (
         <div className="page-wrap">
           <div className="pn" onClick={prev}>
