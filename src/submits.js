@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function Submitted() {
+function Submitted(props) {
   const [data, setData] = useState([]);
   const [data1, setData1] = useState([]);
 
@@ -14,7 +14,9 @@ function Submitted() {
 
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, []);
-
+  window.onload = (event) => {
+    props.setPage(0);
+  };
   useEffect(() => {
     // GET request using fetch inside useEffect React hook
     fetch("https://bootcamp-2022.devtest.ge/api/skills")
