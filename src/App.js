@@ -18,13 +18,6 @@ function App() {
   const [theArray2, setTheArray2] = useState(pageTwoVals);
   const [formError2, setFormError2] = useState("");
 
-  // browser backbutton manipulations
-  window.history.pushState(startPage,null,null);
-  window.onpopstate = () => {
-    prev(); //<-- calls pref function to navigate previuos page
-  }
-  //window.history.pushState({page : startPage},null,null); <== added this to next page (next()) function
-  
   const pageThreeVals = {
     work_preference: "",
     had_covid: "",
@@ -60,10 +53,8 @@ function App() {
     <PageFour ObjFour={fourFormData} setObjFour={setFourFormData} />,
     <Submit n={next} p={prev} />,
     <Thankyou s={() => setPage(0)} />,
-    <Submitted setPage = {setPage}/>
+    <Submitted />
   ];
-
- 
   const handleSubmit1 = (e) => {
     setFormError1(validate(oneFormData));
   };
@@ -86,7 +77,9 @@ function App() {
         e.preventDefault();
     }
   };
-  
+
+  //
+
   const isRequried = (val) => {
     return `* ${val} is required`;
   };
@@ -139,7 +132,6 @@ function App() {
     isOkThree();
   });
   function next() {
-    window.history.pushState({page : startPage},null,null);
     setPage((prev) => {
       if (prev < ComponentArr.length - 1) {
         switch (prev) {
@@ -161,13 +153,7 @@ function App() {
   }
 
   function prev() {
-    switch(startPage) {
-      case 7:
-        setPage(0)
-        break;
-      default:
-        setPage((prev) => (prev > 0 ? prev - 1 : prev));
-    }
+    setPage((prev) => (prev > 0 ? prev - 1 : prev));
   }
 
   function clickDot(i) {
@@ -259,6 +245,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;

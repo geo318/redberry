@@ -102,9 +102,6 @@ textarea:focus {
 .dot.complete {
   opacity: 1;
 }
-.dots {
-  display: flex;
-}
 
 .page-wrap {
   display: flex;
