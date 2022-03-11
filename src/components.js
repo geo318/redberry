@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from "react";
-const error_num = "should include 3 or more characters";
-const error_mail = "unvalid Email";
-const error_number = "unvalid number";
 
 function Dots(props) {
   let len = props.cur;
@@ -12,7 +9,7 @@ function Dots(props) {
         className={`dot ${len > i ? "complete" : ""}`}
         id={i}
         key={i}
-        onClick={() => props.f(i)}
+        onClick={() => props.f(i + 1)}
       ></button>
     );
   }

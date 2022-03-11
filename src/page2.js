@@ -122,51 +122,68 @@ function PageTwo(props) {
   const errors = props.errors;
   return (
     <>
-      <h2>Tell us about your skills</h2>
-      <div className="skillset">
-        <div className="dropIt">
-          <input
-            type="text"
-            name="select"
-            value={value}
-            readOnly
-            onClick={menux}
-          />
-          <div style={Display} className="drop">
-            <div>
-              {data.map((item) => (
-                <div key={item.id}>
-                  <input
-                    key={`i${item.id}`}
-                    id={item.id}
-                    onClick={(e) => {
-                      selectIt(e);
-                      closeIt();
-                    }}
-                    value={item.title}
-                    readOnly
-                  />
+      <div className="block-wrap">
+        <div className="block-left">
+          <h2>Tell us about your skills</h2>
+          <div className="skillset">
+            <div className="dropIt">
+              <input
+                type="text"
+                name="select"
+                value={value}
+                readOnly
+                onClick={menux}
+              />
+              <div style={Display} className="drop">
+                <div>
+                  {data.map((item) => (
+                    <div key={item.id}>
+                      <input
+                        key={`i${item.id}`}
+                        id={item.id}
+                        onClick={(e) => {
+                          selectIt(e);
+                          closeIt();
+                        }}
+                        value={item.title}
+                        readOnly
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
+            <input
+              type="text"
+              name="experience"
+              value={valx.experience}
+              placeholder="Experience Duration in Years"
+              onChange={(e) => setValx({ experience: e.target.value })}
+            />
+            <button
+              onClick={() => {
+                setXp();
+              }}
+            >
+              Add Programming Language
+            </button>
+            <p className="error">{errors}</p>
+            <>{vals}</>
           </div>
         </div>
-        <input
-          type="text"
-          name="experience"
-          value={valx.experience}
-          placeholder="Experience Duration in Years"
-          onChange={(e) => setValx({ experience: e.target.value })}
-        />
-        <button
-          onClick={() => {
-            setXp();
-          }}
-        >
-          Add Programming Language
-        </button>
-        <p className="error">{errors}</p>
-        <>{vals}</>
+        <div className="block-right">
+          <h2>A bit about our battles</h2>
+          <div className="text-wrap">
+            <p>
+              As we said, Redberry has been on the field for quite some time
+              now, and we have touched and embraced a variety of programming
+              languages, technologies, philosophies, and frameworks. We are
+              battle-tested in PHP Laravel Stack with Vue.js, refined in React,
+              and allies with Serverside technologies like Docker and
+              Kubernetes, and now we have set foot in the web3 industry.
+            </p>
+          </div>
+        </div>
       </div>
     </>
   );

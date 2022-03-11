@@ -39,6 +39,22 @@ textarea {
   width: 455px;
   margin: 0 auto;
 }
+
+.none {
+  margin-bottom: 50px !important;
+}
+.radio-wrap > div {
+  margin-bottom: 50px;
+}
+.radio {
+  text-align: left;
+  margin-bottom: 0 !important;
+}
+.radio input[type="radio"] {
+  width: 20px;
+  margin-bottom: 18px;
+  margin-right: 7px;
+}
 h1,
 h2 {
   font-weight: 400;
@@ -53,12 +69,18 @@ h2 {
   margin: 100px auto 0;
 }
 
+p {
+  font-size: 18px;
+  text-align: left;
+}
+
 .block-left h2 {
   margin-bottom: 100px;
   margin-top: 50px;
 }
 
-input:focus {
+input:focus,
+textarea:focus {
   outline: none;
   border: 1px solid var(--red);
 }
@@ -87,6 +109,7 @@ input:focus {
   margin-right: 51.75%;
   padding-right: 20px;
   margin-bottom: 40px;
+  padding-bottom: 100px;
 }
 
 .error {
@@ -188,10 +211,6 @@ main h1 {
   font-family: "Rowdies", Arial, sans-serif;
 }
 
-main ~ .page-wrap {
-  /* display: none; */
-}
-
 form > div:before,
 form > div:after {
   content: "";
@@ -234,7 +253,8 @@ form > div:after {
   margin: 0 auto;
 }
 .skillset button {
-  max-width: 201px;
+  max-width: 220px;
+  padding: 0 10px;
   height: 32px;
   font-size: 12px;
   line-height: 32px;
@@ -285,6 +305,19 @@ form > div:after {
   max-width: 455px;
   margin: 0 auto;
   margin-bottom: 100px;
+}
+.dropIt:before {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  border-color: var(--red);
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  margin-top: 23px;
+  right: 23px;
+  transform: rotate(45deg);
+  pointer-events: none;
 }
 @media only screen and (max-width: 1000px) {
   body {
