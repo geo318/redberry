@@ -335,6 +335,7 @@ form > div:after {
 .content-wrap > div {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-column-gap: 147px;
   margin-bottom: 93px;
 }
 @media only screen and (max-width: 1000px) {

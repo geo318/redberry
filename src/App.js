@@ -78,6 +78,8 @@ function App() {
     }
   };
 
+  //
+
   const isRequried = (val) => {
     return `* ${val} is required`;
   };
