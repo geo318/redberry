@@ -34,4 +34,21 @@ var data = `{
   "something_special": "I am special!"
 }`;
 
+const x = {
+  token: "8fe41587-868f-4abc-8c84-8bb375df1cdd",
+  first_name: "NINO",
+  last_name: "CHICHUA",
+  email: "g_lomidze@cu.edu.ge",
+  phone: "",
+  skills: [{ id: 2, experience: 3 }],
+  work_preference: "from_home",
+  had_covid: true,
+  had_covid_at: "2022-03-25",
+  vaccinated: "true",
+  vaccinated_at: "2022-03-25",
+  devtalk_topic: "k",
+  something_special: "kkk",
+  will_organize_devtalk: true
+};
+
 xhr.send(data);

@@ -1,6 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
+
+const block = { display: "block" };
+const none = { display: "none" };
 
 function PageFour(props) {
+  const [Display, setDisplay] = useState(none);
+
   const fourFormData = props.ObjFour;
   const setFourFormData = props.setObjFour;
 
@@ -17,14 +22,23 @@ function PageFour(props) {
   React.useEffect(() => {
     console.log(fourFormData);
     const data4 = localStorage.getItem("page-Four");
+    const data = localStorage.getItem("page-Four-1");
     if (data4) {
       setFourFormData(JSON.parse(data4));
+    }
+    if (data4) {
+      setDisplay(JSON.parse(data));
     }
   }, []);
 
   React.useEffect(() => {
     localStorage.setItem("page-Four", JSON.stringify(fourFormData));
+    localStorage.setItem("page-Four-1", JSON.stringify(Display));
   });
+
+  const menux = (e) => {
+    return e.target.value === "true" ? setDisplay(block) : setDisplay(none);
+  };
 
   return (
     <>
@@ -38,9 +52,12 @@ function PageFour(props) {
                 type="radio"
                 id="yes"
                 name="will_organize_devtalk"
-                value="True"
-                onChange={handleChange}
-                checked={fourFormData.will_organize_devtalk === "True"}
+                value="true"
+                onChange={(e) => {
+                  handleChange(e);
+                  menux(e);
+                }}
+                checked={fourFormData.will_organize_devtalk === "true"}
               />
               <label htmlFor="yes">Yes</label>
             </div>
@@ -49,15 +66,18 @@ function PageFour(props) {
                 type="radio"
                 id="no"
                 name="will_organize_devtalk"
-                value="False"
-                onChange={handleChange}
-                checked={fourFormData.will_organize_devtalk === "False"}
+                value="false"
+                onChange={(e) => {
+                  handleChange(e);
+                  menux(e);
+                }}
+                checked={fourFormData.will_organize_devtalk === "false"}
               />
               <label htmlFor="no">No</label>
             </div>
           </div>
           <div>
-            <div className="radio-wrap none">
+            <div className="radio-wrap none" style={Display}>
               <p>What would you speak about at Devtalk?</p>
               <textarea
                 placeholder="I would..."

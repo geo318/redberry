@@ -1,8 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
+
+const block = { display: "block" };
+const none = { display: "none" };
 
 function PageThree(props) {
   const threeFormData = props.ObjThree;
   const setThreeFormData = props.setObjThree;
+
+  const [Display, setDisplay] = useState(none);
+  const [Display1, setDisplay1] = useState(none);
+
+  const menux = (e) => {
+    const target = e.target;
+    const name = target.name;
+    const value = target.value;
+    switch (name) {
+      case "had_covid":
+        value === "true" ? setDisplay(block) : setDisplay(none);
+        break;
+      case "vaccinated":
+        value === "true" ? setDisplay1(block) : setDisplay1(none);
+        break;
+      default:
+        setDisplay(none);
+    }
+  };
 
   const handleChange = (e) => {
     const target = e.target;
@@ -16,13 +38,24 @@ function PageThree(props) {
 
   React.useEffect(() => {
     const data = localStorage.getItem("page-three");
+    const data1 = localStorage.getItem("page-three-1");
+    const data2 = localStorage.getItem("page-three-2");
     if (data) {
       setThreeFormData(JSON.parse(data));
+      console.log(JSON.parse(data));
+    }
+    if (data1) {
+      setDisplay(JSON.parse(data1));
+    }
+    if (data2) {
+      setDisplay1(JSON.parse(data2));
     }
   }, []);
 
   React.useEffect(() => {
     localStorage.setItem("page-three", JSON.stringify(threeFormData));
+    localStorage.setItem("page-three-1", JSON.stringify(Display));
+    localStorage.setItem("page-three-2", JSON.stringify(Display1));
   });
 
   return (
@@ -77,7 +110,10 @@ function PageThree(props) {
                   id="yes"
                   name="had_covid"
                   value="true"
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    handleChange(e);
+                    menux(e);
+                  }}
                   checked={threeFormData.had_covid === "true"}
                 />
                 <label htmlFor="yesC">Yes</label>
@@ -88,12 +124,15 @@ function PageThree(props) {
                   id="no"
                   name="had_covid"
                   value="false"
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    handleChange(e);
+                    menux(e);
+                  }}
                   checked={threeFormData.had_covid === "false"}
                 />
                 <label htmlFor="noC">No</label>
               </div>
-              <div>
+              <div style={Display}>
                 <p>When?</p>
                 <input
                   type="date"
@@ -112,7 +151,10 @@ function PageThree(props) {
                   id="yesV"
                   name="vaccinated"
                   value="true"
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    handleChange(e);
+                    menux(e);
+                  }}
                   checked={threeFormData.vaccinated === "true"}
                 />
                 <label htmlFor="yesV">yes</label>
@@ -123,12 +165,15 @@ function PageThree(props) {
                   id="noV"
                   name="vaccinated"
                   value="false"
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    handleChange(e);
+                    menux(e);
+                  }}
                   checked={threeFormData.vaccinated === "false"}
                 />
                 <label htmlFor="noV">no</label>
               </div>
-              <div>
+              <div style={Display1}>
                 <p>When did you get your last covid vaccine?</p>
                 <input
                   type="date"

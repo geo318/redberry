@@ -1,6 +1,7 @@
 import "./App.css";
 import { Dots, Welcome, Thankyou } from "./components";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+
 import { PageOne } from "./page1.js";
 import { PageTwo } from "./page2";
 import { PageThree } from "./page3";
@@ -60,7 +61,7 @@ function App() {
     <PageFour ObjFour={fourFormData} setObjFour={setFourFormData} />,
     <Submit n={next} p={prev} />,
     <Thankyou s={() => setPage(0)} />,
-    <Submitted setPage={setPage} />
+    <Submitted setPage={setPage} startPage={startPage} />
   ];
 
   const handleSubmit1 = (e) => {
@@ -118,9 +119,36 @@ function App() {
   };
 
   const isOkThree = () => {
-    return Object.entries(threeFormData).every((i) => i[1] !== "")
-      ? setTurnThree("1")
-      : setTurnThree("0");
+    if (
+      threeFormData.work_preference !== "" &&
+      (threeFormData.had_covid === "false" ||
+        (threeFormData.had_covid === "true" &&
+          threeFormData.had_covid_at !== "")) &&
+      (threeFormData.vaccinated === "false" ||
+        (threeFormData.vaccinated === "true" &&
+          threeFormData.vaccinated_at !== ""))
+    ) {
+      setTurnThree("1");
+    } else {
+      setTurnThree("0");
+    }
+  };
+
+  const isOkFour = () => {
+    if (
+      fourFormData.will_organize_devtalk !== "" &&
+      fourFormData.something_special !== ""
+    ) {
+      if (
+        fourFormData.will_organize_devtalk === "false" ||
+        (fourFormData.will_organize_devtalk === "true" &&
+          fourFormData.devtalk_topic !== "")
+      ) {
+        setTurnFour("1");
+      }
+    } else {
+      setTurnFour("0");
+    }
   };
 
   React.useEffect(() => {
@@ -136,6 +164,7 @@ function App() {
 
   React.useEffect(() => {
     isOkThree();
+    isOkFour();
   });
   function next() {
     window.history.pushState({ page: startPage }, null, null);
@@ -150,6 +179,8 @@ function App() {
             return theArray2["skills"].length >= 2 ? prev + 1 : prev;
           case 3:
             return turnThree === "1" ? prev + 1 : prev;
+          case 4:
+            return turnFour === "1" ? prev + 1 : prev;
           default:
             return prev + 1;
         }
@@ -220,6 +251,7 @@ function App() {
               submitIf(e);
               next();
               isOkThree();
+              isOkFour();
             }}
             className="pn"
           >
