@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import stars from "./stars.png";
 
 function Dots(props) {
   let len = props.cur;
@@ -21,7 +22,7 @@ function Welcome(props) {
     <>
       <div className="main_back">
         <main
-          style={{ backgroundImage: "url(" + require("./stars.png") + ")" }}
+          style={{ backgroundImage: `url(${stars})` }}
         >
           <h1>Welcome Rocketeer !</h1>
           <div className="Welcome">
