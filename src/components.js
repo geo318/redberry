@@ -34,7 +34,7 @@ function Welcome(props) {
           <div
             className="rocket"
             style={{
-              backgroundImage: "url(" + require("./rocketman.png") + ")"
+              backgroundImage: `url(${process.env.PUBLIC_URL + '/rocketman.png'})`
             }}
           ></div>
         </main>
