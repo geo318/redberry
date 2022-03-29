@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/redberry/static/css/main.a57bf6c8.css",
+    "main.js": "/redberry/static/js/main.1febe118.js",
+    "static/js/787.bc928270.chunk.js": "/redberry/static/js/787.bc928270.chunk.js",
+    "index.html": "/redberry/index.html",
+    "main.a57bf6c8.css.map": "/redberry/static/css/main.a57bf6c8.css.map",
+    "main.1febe118.js.map": "/redberry/static/js/main.1febe118.js.map",
+    "787.bc928270.chunk.js.map": "/redberry/static/js/787.bc928270.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a57bf6c8.css",
+    "static/js/main.1febe118.js"
+  ]
+}
