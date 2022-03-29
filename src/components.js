@@ -22,7 +22,7 @@ function Welcome(props) {
     <>
       <div className="main_back">
         <main
-          style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/image.png'})`}}
+          style={{backgroundImage: `url(${process.env.PUBLIC_URL + './image.png'})`}}
         >
           <h1>Welcome Rocketeer !</h1>
           <div className="Welcome">
@@ -34,7 +34,7 @@ function Welcome(props) {
           <div
             className="rocket"
             style={{
-              backgroundImage: `url(${process.env.PUBLIC_URL + '/rocketman.png'})`
+              backgroundImage: `url(${process.env.PUBLIC_URL + './rocketman.png'})`
             }}
           ></div>
         </main>
