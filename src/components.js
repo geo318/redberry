@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import stars from "./stars.png";
+import rocket from "./rocketman.png";
 
 function Dots(props) {
   let len = props.cur;
@@ -34,7 +35,7 @@ function Welcome(props) {
           <div
             className="rocket"
             style={{
-              backgroundImage: "url(./rocketman.png)"
+              backgroundImage: `url(${rocket})`
             }}
           ></div>
         </main>
