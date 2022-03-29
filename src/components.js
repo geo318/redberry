@@ -22,7 +22,7 @@ function Welcome(props) {
     <>
       <div className="main_back">
         <main
-          style={{backgroundImage: "url(./stars.png)"}}
+          style={{ backgroundImage: "url(" + require("./stars.png") + ")" }}
         >
           <h1>Welcome Rocketeer !</h1>
           <div className="Welcome">
