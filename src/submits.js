@@ -195,9 +195,10 @@ function Submitted(props) {
 
 function Submit(props) {
   return (
-    <div className="main_back">
+      <div>
+      <div className="main_back"/>
       <main>
-        <div className="Welcome">
+        <div className="welcome">
           <button onClick={props.n}>Submit</button>
           <button onClick={props.p} className="nostyle">
             Go Back

@@ -92,7 +92,7 @@ textarea:focus {
   border: 0;
   background: #fe3b1f;
   opacity: 0.1;
-  margin: 0 7.5px;
+  margin: 0 7.5px 40px;
 }
 .dot.complete {
   opacity: 1;
@@ -129,7 +129,7 @@ textarea:focus {
 .block-right p {
   margin: 0 auto;
   max-width: 785px;
-  height: 606px;
+  height: 550px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -153,6 +153,7 @@ textarea:focus {
   max-width: 48.25%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px;
 }
 
 .block-wrap {
@@ -283,7 +284,7 @@ form > div:after {
   text-align: unset;
   max-width: 455px;
   margin: 0 auto;
-  margin-bottom: 100px;
+  margin-bottom: 40px;
 }
 .dropIt:before {
   content: "";

@@ -60,7 +60,7 @@ function App() {
     />,
     <PageThree ObjThree={threeFormData} setObjThree={setThreeFormData} />,
     <PageFour ObjFour={fourFormData} setObjFour={setFourFormData} />,
-    <Submit n={next} p={prev} />,
+    <Submit n={() =>next()} p={()=>prev()} />,
     <Thankyou s={() => setPage(0)} />,
     <Submitted setPage={setPage} startPage={startPage} />
   ];
