@@ -1,0 +1,61 @@
+body
+    font-size: 100%
+    line-height: 1
+input
+    padding: 20px
+    border: 1px solid #000
+    border-radius: 0
+    font-size: 14px
+main h1
+    font-size: 6em
+    color: #FE3B1F
+    font-family: 'Rowdies',sans-serif
+    text-align: center
+main
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 100vh
+.rocket
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+.welcome_wrap
+    display: block
+    text-align: center
+    margin-inline: auto
+    margin-bottom: 10%
+.welcome
+    justify-content: center
+    align-items: center
+    margin-top: 10%
+    display: flex
+    flex-direction: column
+.back_ground,
+.main_back
+    position: fixed
+    z-index: -1
+    inset: 0
+    background-size: 100%
+    background-repeat: repeat
+.wrap
+    &::after,
+    &::before
+        content: ''
+        display: table
+        clear: both
+form
+    min-width: 100%
+    height: auto
+.main
+    height: 100%
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+#root
+    display: flex
+    flex-flow: column
+    >div
+        flex-grow: 1

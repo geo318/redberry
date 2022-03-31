@@ -12,11 +12,6 @@ body {
   text-align: center;
   height: 100vh;
 }
-
-.main {
-  margin: 0 auto;
-  height: 100vh;
-}
 body > div,
 form {
   height: inherit;
@@ -109,7 +104,6 @@ textarea:focus {
   margin-right: 51.75%;
   padding-right: 20px;
   margin-bottom: 40px;
-  padding-bottom: 100px;
 }
 
 .error {
@@ -168,16 +162,6 @@ textarea:focus {
 form > div {
   display: grid;
 }
-main {
-  background-size: 80%;
-  background-repeat: repeat;
-  display: block;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 .main_back {
   background-image: radial-gradient(#0c0d0e 0%, #151718 73.44%);
 }
@@ -189,11 +173,6 @@ main button {
   width: 395px;
   font-size: 24px;
   border-radius: 60px;
-}
-.Welcome {
-  margin-top: 140px;
-  display: flex;
-  flex-direction: column;
 }
 .nostyle {
   background: none;

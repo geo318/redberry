@@ -21,23 +21,27 @@ function Dots(props) {
 function Welcome(props) {
   return (
     <>
-      <div className="main_back">
-        <main
-          style={{ backgroundImage: `url(${stars})` }}
-        >
-          <h1>Welcome Rocketeer !</h1>
-          <div className="Welcome">
-            <button onClick={props.f}>Start Questionnaire</button>
-            <button onClick={props.s} className="nostyle">
-              Submitted Applications
-            </button>
+      <div>
+        <div className="main_back"/>
+        <main>
+          <div className="back_ground" style={{ backgroundImage: `url(${stars})`}}/>
+          <div className='welcome_wrap'>
+            <h1>Welcome Rocketeer !</h1>
+            <div className="welcome">
+              <button onClick={props.f}>Start Questionnaire</button>
+              <button onClick={props.s} className="nostyle">
+                Submitted Applications
+              </button>
+            </div>
+            <div className="rock_wrap">
+              <div
+                className="rocket"
+                style={{
+                  backgroundImage: `url(${rocket})`
+                }}
+              />
+            </div>
           </div>
-          <div
-            className="rocket"
-            style={{
-              backgroundImage: `url(${rocket})`
-            }}
-          ></div>
         </main>
       </div>
     </>

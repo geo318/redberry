@@ -1,4 +1,5 @@
 import "./App.css";
+import './cssCompiled/App.min.css';
 import { Dots, Welcome, Thankyou } from "./components";
 import React, { useState } from "react";
 
