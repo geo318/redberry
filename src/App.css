@@ -86,13 +86,13 @@ textarea:focus {
 }
 
 .page-wrap button {
-  width: 19px;
-  height: 19px;
+  width: 20px;
+  height: 20px;
   border-radius: 20px;
   border: 0;
   background: #fe3b1f;
   opacity: 0.1;
-  margin: 0 7.5px 40px;
+  margin: 0 7.5px;
 }
 .dot.complete {
   opacity: 1;
@@ -103,7 +103,7 @@ textarea:focus {
   justify-content: center;
   margin-right: 51.75%;
   padding-right: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 80px;
 }
 
 .error {

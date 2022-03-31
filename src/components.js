@@ -15,7 +15,7 @@ function Dots(props) {
       ></button>
     );
   }
-  return <div className="dots">{dots}</div>;
+  return <div className="dots flx">{dots}</div>;
 }
 
 function Welcome(props) {
@@ -23,11 +23,11 @@ function Welcome(props) {
     <>
       <div>
         <div className="main_back"/>
-        <main>
+        <main className='flx'>
           <div className="back_ground" style={{ backgroundImage: `url(${stars})`}}/>
           <div className='welcome_wrap'>
             <h1>Welcome Rocketeer !</h1>
-            <div className="welcome">
+            <div className="welcome flx">
               <button onClick={props.f}>Start Questionnaire</button>
               <button onClick={props.s} className="nostyle">
                 Submitted Applications
@@ -80,8 +80,8 @@ function Thankyou(props) {
   return (
     <>
       <div className="main_back">
-        <main>
-          <div className="Welcome">
+        <main className='flx'>
+          <div className="welcome flx">
             <h1>Thanks for Joining 😊</h1>
           </div>
         </main>

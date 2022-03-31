@@ -6,6 +6,10 @@ input
     border: 1px solid #000
     border-radius: 0
     font-size: 14px
+.flx
+    display: flex
+    justify-content: center
+    align-items: center
 main h1
     font-size: 6em
     color: #FE3B1F
@@ -13,10 +17,9 @@ main h1
     text-align: center
 main
     position: relative
-    display: flex
-    justify-content: center
-    align-items: center
     height: 100vh
+.main
+    height: 100%
 .rocket
     position: absolute
     left: 50%
@@ -27,10 +30,7 @@ main
     margin-inline: auto
     margin-bottom: 10%
 .welcome
-    justify-content: center
-    align-items: center
     margin-top: 10%
-    display: flex
     flex-direction: column
 .back_ground,
 .main_back
@@ -48,12 +48,6 @@ main
 form
     min-width: 100%
     height: auto
-.main
-    height: 100%
-    display: flex
-    flex-direction: row
-    justify-content: center
-    align-items: center
 #root
     display: flex
     flex-flow: column
