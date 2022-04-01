@@ -55,7 +55,7 @@ function PageThree(props) {
 
   const inp_group = inpVals.map((elem,indx) => (
     <div>
-      {typeof elem[3] === 'string' ? <p>{elem[3]}</p> : null}
+      {typeof elem[3] === 'string' ? <p style = {elem[0] === 'date' ? elem[4] : null}>{elem[3]}</p> : null}
       {
         elem[2].map((val,i) => {
           return (

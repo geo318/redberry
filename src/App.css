@@ -352,3 +352,38 @@ form > div:after {
     line-height: 40px;
   }
 }
+
+.loading {
+	width: 100%;
+	max-width: 4rem;
+	animation: rotate 1s linear infinite;
+}
+
+.loading circle {
+	fill: none;
+	stroke: var(--red);
+	stroke-width: 7px;
+	stroke-dasharray: 300;
+	animation: outline 2s cubic-bezier(0.77,0,0.18,1) infinite;
+}
+
+@keyframes outline {
+	0% {
+		stroke-dashoffset: 0;
+	}
+	50% {
+		stroke-dashoffset: 300;
+	}
+	100% {
+		stroke-dashoffset: 600;
+	}
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate(0turn);
+	}
+	to {
+		transform: rotate(-1turn);
+	}
+}

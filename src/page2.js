@@ -31,13 +31,14 @@ function PageTwo(props) {
     }
   });
 
-  const getData = () => {
-    fetch("https://bootcamp-2022.devtest.ge/api/skills")
-      .then((response) => response.json())
-      .then((Json) => {
-        setData(Json);
-      });
+  const getData = async () => {
+    await fetch("https://bootcamp-2022.devtest.ge/api/skills")
+    .then((response) => response.json())
+    .then((Json) => {
+      setData(Json);
+    });
   };
+
   useEffect(() => {
     getData();
   }, []);
