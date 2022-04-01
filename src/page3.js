@@ -46,37 +46,36 @@ function PageThree(props) {
   });
 
   const inpVals = [
-    ['radio','work_preference',['From_Sairme_Office','From_Home','Hybrid'],'paragraph','lb'],
-    ['radio','had_covid',['true','false'],'paragraph','lb'],
-    ['date','had_covid_at',['had_covid_at'],Display.had_covid],
-    ['radio','vaccinated',['true','false'],'paragraph','lb'],
-    ['date','vaccinated_at',['vaccinated_at'],Display.vaccinated]
+    ['radio','work_preference',['From_Sairme_Office','From_Home','Hybrid'],'how would you prefer to work?','lb'],
+    ['radio','had_covid',['true','false'],'Did you contact covid 19? :(','lb'],
+    ['date','had_covid_at',['had_covid_at'],'When?',Display.had_covid],
+    ['radio','vaccinated',['true','false'],'Have you been vaccinated?','lb'],
+    ['date','vaccinated_at',['vaccinated_at'],'When did you get your last covid vaccine?',Display.vaccinated]
   ];
 
   const inp_group = inpVals.map((elem,indx) => (
-      <div>
-        {typeof elem[3] === 'string' ? <p>{elem[3]}</p> : null}
+    <div>
+      {typeof elem[3] === 'string' ? <p>{elem[3]}</p> : null}
       {
-       elem[2].map((val,i) => {
-       console.log(threeFormData[elem[1]])
-        return (
-          <Input 
-            keys = {indx + i} 
-            id = {`${val}`} 
-            type = {elem[0]} 
-            cls = {elem[0]} 
-            value = {elem[0] === 'radio'? val : threeFormData[elem[1]]} 
-            name = {elem[1]} 
-            handle = {(e)=>{elem[2][0] === 'true' ? handleChange(e) : handleChange(e); menux(e);}}
-            label = {elem[4] ? val === 'true' ? 'Yes' : val === 'false' ? 'No' : `${val}`: null}
-            checked = {elem[0] === 'radio' ? threeFormData[elem[1]] === val : null}
-            style = {elem[0] === 'date' ? elem[3] : null}
-          />
-        )
+        elem[2].map((val,i) => {
+          return (
+            <Input 
+              keys = {indx + i}
+              id = {`${val}`}
+              type = {elem[0]}
+              cls = {elem[0]}
+              value = {elem[0] === 'radio'? val : threeFormData[elem[1]]}
+              name = {elem[1]}
+              handle = {(e)=>{elem[2][0] === 'true' ? handleChange(e) : handleChange(e); menux(e);}}
+              label = {elem[4] ? val === 'true' ? 'Yes' : val === 'false' ? 'No' : elem[0] === 'radio' ? `${val}` : null : null}
+              checked = {elem[0] === 'radio' ? threeFormData[elem[1]] === val : null}
+              style = {elem[0] === 'date' ? elem[4] : null}
+            />
+          )
         })
       }
     </div>
-    ));
+  ));
 
   return (
     <>
@@ -105,4 +104,5 @@ function PageThree(props) {
     </>
   );
 }
+
 export { PageThree };
