@@ -34,6 +34,7 @@ function App() {
     vaccinated: "",
     vaccinated_at: ""
   };
+  
   const [turnThree, setTurnThree] = useState("0");
   const [threeFormData, setThreeFormData] = useState(pageThreeVals);
 
@@ -161,12 +162,10 @@ function App() {
 
   React.useEffect(() => {
     localStorage.setItem("page-set", JSON.stringify(startPage));
-  });
-
-  React.useEffect(() => {
     isOkThree();
     isOkFour();
   });
+
   function next() {
     window.history.pushState({ page: startPage }, null, null);
     setPage((prev) => {

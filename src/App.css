@@ -194,7 +194,6 @@ main h1 {
 form > div:before,
 form > div:after {
   content: "";
-  /*adds pseudo element on top and aligns form content in the middle automatically*/
 }
 
 .drop {
@@ -282,6 +281,7 @@ form > div:after {
 
 .radio-wrap {
   text-align: unset;
+  width: 100%;
   max-width: 455px;
   margin: 0 auto;
   margin-bottom: 40px;

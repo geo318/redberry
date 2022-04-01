@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Input } from "./components.js";
 
 const block = { display: "block" };
 const none = { display: "none" };
@@ -102,18 +103,7 @@ function PageTwo(props) {
             });
           }}
         >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C19.9939 15.5203 15.5203 19.9939 10 20ZM2 10.172C2.04732 14.5732 5.64111 18.1095 10.0425 18.086C14.444 18.0622 17.9995 14.4875 17.9995 10.086C17.9995 5.68451 14.444 2.10977 10.0425 2.086C5.64111 2.06246 2.04732 5.59876 2 10V10.172ZM15 11H5V9H15V11Z"
-              fill="#EB3535"
-            />
-          </svg>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C19.9939 15.5203 15.5203 19.9939 10 20ZM2 10.172C2.04732 14.5732 5.64111 18.1095 10.0425 18.086C14.444 18.0622 17.9995 14.4875 17.9995 10.086C17.9995 5.68451 14.444 2.10977 10.0425 2.086C5.64111 2.06246 2.04732 5.59876 2 10V10.172ZM15 11H5V9H15V11Z" fill="#EB3535"/></svg>
         </div>
       </div>
     ))
@@ -141,10 +131,7 @@ function PageTwo(props) {
                       <input
                         key={`i${item.id}`}
                         id={item.id}
-                        onClick={(e) => {
-                          selectIt(e);
-                          closeIt();
-                        }}
+                        onClick={(e) => {selectIt(e); closeIt();}}
                         value={item.title}
                         readOnly
                       />
@@ -153,20 +140,8 @@ function PageTwo(props) {
                 </div>
               </div>
             </div>
-            <input
-              type="text"
-              name="experience"
-              value={valx.experience}
-              placeholder="Experience Duration in Years"
-              onChange={(e) => setValx({ experience: e.target.value })}
-            />
-            <button
-              onClick={() => {
-                setXp();
-              }}
-            >
-              Add Programming Language
-            </button>
+            <Input type = {'text'} place = {'experience'} value = {valx.experience} name = {'Experience Duration in Years'} handle = {(e) => setValx({ experience: e.target.value })}/>
+            <button onClick={() => {setXp();}}>Add Programming Language</button>
             <p className="error">{errors}</p>
             <>{vals}</>
           </div>

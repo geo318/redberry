@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Input } from "./components.js";
 function PageOne(props) {
   const oneFormData = props.ObjOne;
   const setOneFormData = props.setObjOne;
@@ -31,54 +31,10 @@ function PageOne(props) {
       <div className="block-left">
         <h2>Hey, Rocketeer, what are your coordinates?</h2>
         <div className="input-wrap">
-          <div>
-            <>
-              <input
-                type="text"
-                placeholder="First Name"
-                value={oneFormData.first_name}
-                name="first_name"
-                onChange={handleChange}
-              />
-              <p className="error">{errors.first_name}</p>
-            </>
-          </div>
-          <div>
-            <>
-              <input
-                type="text"
-                placeholder="Last Name"
-                value={oneFormData.last_name}
-                name="last_name"
-                onChange={handleChange}
-              />
-              <p className="error">{errors.last_name}</p>
-            </>
-          </div>
-          <div>
-            <>
-              <input
-                type="email"
-                placeholder="E Mail"
-                value={oneFormData.email}
-                name="email"
-                onChange={handleChange}
-              />
-              <p className="error">{errors.email}</p>
-            </>
-          </div>
-          <div>
-            <>
-              <input
-                type="phone"
-                placeholder="+995 5__ __ __ __"
-                value={oneFormData.phone}
-                name="phone"
-                onChange={handleChange}
-              />
-              <p className="error">{errors.phone}</p>
-            </>
-          </div>
+          <Input type = {'text'} place = {'First Name'} value = {oneFormData.first_name} name = {'first_name'} handle = {handleChange} error = {errors.first_name}/>
+          <Input type = {'text'} place = {'Last Name'} value = {oneFormData.last_name} name = {'last_name'} handle = {handleChange} error = {errors.last_name}/>
+          <Input type = {'email'} place = {'E Mail'} value = {oneFormData.email} name = {'email'} handle = {handleChange} error = {errors.email}/>
+          <Input type = {'phone'} place = {'+995 5__ __ __ __'} value = {oneFormData.phone} name = {'phone'} handle = {handleChange} error = {errors.phone}/>
         </div>
       </div>
       <div className="block-right">

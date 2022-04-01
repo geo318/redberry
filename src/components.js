@@ -90,4 +90,24 @@ function Thankyou(props) {
   );
 }
 
-export { Dots, Welcome, Thankyou };
+function Input(props) {
+  return (
+    <div className = {props.cls} style = {props.style}>
+      <>
+        <input
+          id = {props.id}
+          type = {props.type}
+          placeholder = {props.place}
+          value = {props.value}
+          name = {props.name}
+          onChange = {props.handle}
+          checked = {props.checked}
+        />
+        { props.label? <label htmlFor = {props.id}>{props.label}</label> : null }
+        { props.error? <p className="error">{props.error}</p> : null }
+      </>
+    </div>
+  );
+}
+
+export { Input, Dots, Welcome, Thankyou };
