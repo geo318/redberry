@@ -10,10 +10,6 @@ function Submitted(props) {
     .then((response) => response.json())
     .then((data) => setData(data));
   }
-  useEffect(() => {
-    getFullData();
-  });
-  
   const getSkillSet = async () => {
     await fetch("https://bootcamp-2022.devtest.ge/api/skills")
     .then((response) => response.json())
@@ -22,6 +18,7 @@ function Submitted(props) {
 
   useEffect(() => {
     getSkillSet();
+    getFullData();
   }, []);
 
   const looper = (x, propToFind, propLookUp, returnProp) => {
