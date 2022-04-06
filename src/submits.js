@@ -47,7 +47,10 @@ function Submitted(props) {
   const dataSet = data.map((e, i) => (
       <div key={i} className="outer-wrap">
         <div>
-          <input className="list" onClick = {e=>menux(e)} name = {i} value={i + 1} readOnly/>
+          <div className='dropper'>
+            <input className = {`list ${Display[i].display === 'none'? 'down' : 'up'}`} onClick = {e=>menux(e)} name = {i} value={i + 1} readOnly/>
+            <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.01 7.425L12.02 1.415L10.607 0L6.01 4.6L1.414 0L0 1.414L6.01 7.425Z" fill="white"/></svg>
+          </div>
           <div className="content-wrap" style={Display[i]}>
             <div>
               <div>
@@ -165,6 +168,12 @@ function Submitted(props) {
     ));
   return (
     <div className='submits'>
+      <div className='backW'>
+        <div className='back' onClick = {props.s}>
+          <span><svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.01 7.425L12.02 1.415L10.607 0L6.01 4.6L1.414 0L0 1.414L6.01 7.425Z" fill="white"/></svg></span>
+          <span>back</span>
+        </div>
+      </div>
       <h2>Submitted Applications</h2>
       {data.length > 0? dataSet : <Loader/>}
     </div>

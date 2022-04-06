@@ -51,7 +51,7 @@ function PageThree(props) {
     ['radio','vaccinated',[true,false],'Have you been vaccinated?','lb'],
     ['date','vaccinated_at',['vaccinated_at'],'When did you get your last covid vaccine?',Display.vaccinated]
   ];
-  console.log(data)
+
   const inp_group = inpVals.map((elem,indx) => (
     <div key = {'div' + indx}>
       {typeof elem[3] === 'string' ? <p key = {'p' + indx} style = {elem[0] === 'date' ? elem[4] : null}>{elem[3]}</p> : null}

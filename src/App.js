@@ -63,7 +63,7 @@ function App() {
     <PageFour ObjFour={fourFormData} setObjFour={setFourFormData} />,
     <Submit n={() =>next()} p={()=>prev()} />,
     <Thankyou s={() => setPage(0)} />,
-    <Submitted setPage={setPage} startPage={startPage} />
+    <Submitted s={() => setPage(0)} />
   ];
 
   const handleSubmit1 = (e) => {
@@ -218,7 +218,7 @@ function App() {
     if (
       startPage !== ComponentArr.length - 3 &&
       startPage !== ComponentArr.length - 2 &&
-      //startPage !== ComponentArr.length - 1 &&
+      startPage !== ComponentArr.length - 1 &&
       startPage !== 0
     ) {
       return (

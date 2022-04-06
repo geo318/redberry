@@ -56,12 +56,14 @@ form
 .submits
     background-color: #0C0D0E
     min-height: 100vh
+    padding-bottom: 60px
     h2
         color: #fff
         margin-bottom: 40px
         max-width: 1194px
         width: 100%
         text-align: left
+        margin-top: 30px
     input, textarea
         width: 100%
     .rad > div
@@ -75,14 +77,11 @@ form
     max-width: 1194px
     padding: 20px 20px 10px
     margin: 0 auto
-.list
-    padding: 15px 40px
-    outline: none
-    width: 100%
-    color: #fff
-    + .content-wrap
+    .content-wrap
         padding: 50px
         background-color: #fff
+        border: 2px solid var(--red)
+        border-top: 0
         > div
             margin-bottom: 50px
         input
@@ -104,3 +103,35 @@ form
             height: 20px
             &:first-child
                 width: 150px
+.list
+    padding: 15px 40px
+    outline: none
+    width: 100%
+    color: #fff
+    cursor: pointer
+    border: none
+    &:focus
+        border: none
+.dropper
+    position: relative
+    svg
+        position: absolute
+        top: 20px
+        right: 20px
+        pointer-events: none
+.up + svg
+        transform: rotate(-180deg)
+.backW
+    width: 100%
+    max-width: 1194px
+    margin-inline: auto
+    .back
+        float: left
+        padding: 20px
+        margin-top: 30px
+        text-align: left
+        color: #fff
+        cursor: pointer
+        svg
+            transform: rotate(90deg)
+            margin-right: 15px
