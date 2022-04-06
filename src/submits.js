@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Loader } from "./components.js";
 
+let dataSets;
+  fetch("https://bootcamp-2022.devtest.ge/api/applications?token=8fe41587-868f-4abc-8c84-8bb375df1cdd")
+  .then((response) => response.json())
+  .then((data) => dataSets = data)
+  .then(() => console.log(dataSets))
+
 function Submitted(props) {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(dataSets);
   const [data1, setData1] = useState([]);
 
-  const getFullData = async () => {
-    fetch("https://bootcamp-2022.devtest.ge/api/applications?token=8fe41587-868f-4abc-8c84-8bb375df1cdd")
-    .then((response) => response.json())
-    .then((data) => setData(data));
+  let displaySet = {};
+  for (var x = 0; x < dataSets.length; x++) {
+    displaySet[x] = {display: 'none'};
   }
+
   const getSkillSet = async () => {
     await fetch("https://bootcamp-2022.devtest.ge/api/skills")
     .then((response) => response.json())
@@ -18,7 +24,6 @@ function Submitted(props) {
 
   useEffect(() => {
     getSkillSet();
-    getFullData();
   }, []);
 
   const looper = (x, propToFind, propLookUp, returnProp) => {
@@ -28,15 +33,26 @@ function Submitted(props) {
       }
     }
   };
+
+  const [Display, setDisplay] = useState(displaySet);
+  const menux = (e) => {
+    let val = Display[e.target.name];
+    let toggle;
+    val.display === 'none' ? toggle = 'block' : toggle = 'none';
+    setDisplay({
+      ...Display,
+      [e.target.name]: {display : toggle}
+    })
+  };
   const dataSet = data.map((e, i) => (
       <div key={i} className="outer-wrap">
         <div>
-          <div className="list">{i + 1}</div>
-          <div className="content-wrap">
+          <input className="list" onClick = {e=>menux(e)} name = {i} value={i + 1} readOnly/>
+          <div className="content-wrap" style={Display[i]}>
             <div>
               <div>
                 <h3>Personal Information</h3>
-                <div>
+                <div className='rad'>
                   <p>
                     <span>First Name</span>
                     <span key={`f${i}`}>{e.first_name}</span>
@@ -74,114 +90,72 @@ function Submitted(props) {
             <div>
               <div>
                 <h3>Covid Stuff</h3>
-                <div>
+                <div className='rad'>
                   <p>how would you prefer to work?</p>
                   <div>
-                    <input
-                      key={`Of${i}`}
-                      type="radio"
-                      id="office"
-                      name="work_preference"
-                      checked={e.work_preference === "from_sairme_office"}
-                      readOnly
-                    />
-                    <label htmlFor="office">From Sairme Office</label>
+                    <input key={`Of${i}`} type="radio" checked={e.work_preference === "from_sairme_office"} readOnly/>
+                    <label>From Sairme Office</label>
                   </div>
                   <div>
-                    <input
-                      key={`Ho${i}`}
-                      type="radio"
-                      id="Home"
-                      name="work_preference"
-                      checked={e.work_preference === "from_home"}
-                      readOnly
-                    />
-                    <label htmlFor="home">From Home</label>
+                    <input key={`Of${i}`} type="radio" checked={e.work_preference === "from_home"} readOnly/>
+                    <label>From Home</label>
                   </div>
                   <div>
-                    <input
-                      key={`Hy${i}`}
-                      type="radio"
-                      id="Hybrid"
-                      name="work_preference"
-                      checked={e.work_preference === "hybrid"}
-                      readOnly
-                    />
-                    <label htmlFor="Hybrid">Hybrid</label>
+                    <input key={`Of${i}`} type="radio" checked={e.work_preference === "hybrid"} readOnly/>
+                    <label>Hybrid</label>
                   </div>
                 </div>
-                <div>
+                <div className='rad'>
                   <p>Did you contact covid 19? :(</p>
                   <div>
-                    <input
-                      key={`CT${i}`}
-                      type="radio"
-                      id="yes"
-                      name="had_covid"
-                      checked={e.had_covid}
-                      readOnly
-                    />
-                    <label htmlFor="yesC">Yes</label>
+                    <input key={`Of${i}`} type="radio" checked={e.had_covid} readOnly/>
+                    <label>Yes</label>
                   </div>
                   <div>
-                    <input
-                      key={`CF${i}`}
-                      type="radio"
-                      id="no"
-                      name="had_covid"
-                      checked={e.had_covid === false}
-                      readOnly
-                    />
-                    <label htmlFor="noC">No</label>
-                  </div>
-                  <div>
-                    <p>When?</p>
-                    <input
-                      key={`DC${i}`}
-                      type="date"
-                      id="dateC"
-                      name="had_covid_at"
-                      value={e.had_covid_at}
-                      readOnly
-                    />
+                    <input key={`Of${i}`} type="radio" checked={e.had_covid === false} readOnly/>
+                    <label>No</label>
                   </div>
                 </div>
                 <div>
+                  <p>When?</p>
+                  <input key={`DC${i}`} type="date" value={e.had_covid_at} readOnly/>
+                </div>
+                <div className='rad'>
                   <p>Have you been vaccinated?</p>
                   <div>
-                    <input
-                      key={`Vy${i}`}
-                      type="radio"
-                      id="yesV"
-                      name="vaccinated"
-                      checked={e.vaccinated === true}
-                      readOnly
-                    />
-                    <label htmlFor="yesV">yes</label>
+                    <input key={`Vy${i}`} type="radio" checked={e.vaccinated === true} readOnly/>
+                    <label>yes</label>
                   </div>
                   <div>
-                    <input
-                      key={`Vn${i}`}
-                      type="radio"
-                      id="noV"
-                      name="vaccinated"
-                      value="false"
-                      checked={e.vaccinated === "false"}
-                      readOnly
-                    />
-                    <label htmlFor="noV">no</label>
+                    <input key={`Vn${i}`} type="radio" checked={e.vaccinated === "false"} readOnly/>
+                    <label>no</label>
+                  </div>
+                </div>
+                <div>
+                  <p>When did you get your last covid vaccine?</p>
+                  <input key={`VD${i}`} type="date" value={e.vaccinated_at} readOnly/>
+                </div>
+              </div>
+              <div>
+                <h3>Insights</h3>
+                <div className='rad'>
+                  <p>Would you attend Devtalks and maybe also organize your own?</p>
+                  <div>
+                    <input key={`Vyd${i}`} type="radio" checked={e.will_organize_devtalk} readOnly/>
+                    <label>yes</label>
                   </div>
                   <div>
-                    <p>When did you get your last covid vaccine?</p>
-                    <input
-                      key={`VD${i}`}
-                      type="date"
-                      id="dateV"
-                      name="vaccinated_at"
-                      value={e.vaccinated_at}
-                      readOnly
-                    />
+                    <input key={`Vnd${i}`} type="radio" checked={e.will_organize_devtalk === false} readOnly/>
+                    <label>no</label>
                   </div>
+                </div>
+                <div>
+                  <p>What would you speak about at Devtalk?</p>
+                  <textarea key={`VDd${i}`} value={e.devtalk_topic} readOnly/>
+                </div>
+                <div>
+                  <p>Tell us somthing special</p>
+                  <textarea key={`VD2d${i}`} value={e.something_special} readOnly/>
                 </div>
               </div>
             </div>
@@ -190,7 +164,8 @@ function Submitted(props) {
       </div>
     ));
   return (
-    <div>
+    <div className='submits'>
+      <h2>Submitted Applications</h2>
       {data.length > 0? dataSet : <Loader/>}
     </div>
   );
@@ -198,7 +173,7 @@ function Submitted(props) {
 
 function Submit(props) {
   return (
-      <div>
+    <div>
       <div className="main_back"/>
       <main className="flx">
         <div className="welcome flx">

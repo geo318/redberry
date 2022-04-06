@@ -62,7 +62,7 @@ function Thankyou(props) {
     ...JSON.parse(data3),
     ...JSON.parse(data4)
   };
-
+  console.log(dataSet)
   React.useEffect(() => {
     const requestOptions = {
       method: "POST",
@@ -93,16 +93,27 @@ function Thankyou(props) {
 function Input(props) {
   return (
     <div className = {props.cls} style = {props.style}>
-      <>
-        <input
-          id = {props.id}
-          type = {props.type}
-          placeholder = {props.place}
-          value = {props.value}
-          name = {props.name}
-          onChange = {props.handle}
-          checked = {props.checked}
-        />
+      <>{ props.render === 'textarea'
+          ? <textarea
+              id = {props.id}
+              placeholder = {props.place}
+              value = {props.value}
+              name = {props.name}
+              onChange = {props.handle}
+              readOnly = {props.isReadOnly}
+            />
+          : <input
+              id = {props.id}
+              type = {props.type}
+              placeholder = {props.place}
+              value = {props.value}
+              name = {props.name}
+              onChange = {props.handle}
+              onClick = {props.click}
+              checked = {props.checked}
+              readOnly = {props.isReadOnly}
+            />
+        }
         { props.label? <label htmlFor = {props.id}>{props.label}</label> : null }
         { props.error? <p className="error">{props.error}</p> : null }
       </>

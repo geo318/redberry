@@ -51,5 +51,56 @@ form
 #root
     display: flex
     flex-flow: column
-    >div
+    > div
         flex-grow: 1
+.submits
+    background-color: #0C0D0E
+    min-height: 100vh
+    h2
+        color: #fff
+        margin-bottom: 40px
+        max-width: 1194px
+        width: 100%
+        text-align: left
+    input, textarea
+        width: 100%
+    .rad > div
+        display: table
+        padding: 10px 20px
+        input
+            width: 20px
+            margin-right: 20px
+.outer-wrap
+    width: 100%
+    max-width: 1194px
+    padding: 20px 20px 10px
+    margin: 0 auto
+.list
+    padding: 15px 40px
+    outline: none
+    width: 100%
+    color: #fff
+    + .content-wrap
+        padding: 50px
+        background-color: #fff
+        > div
+            margin-bottom: 50px
+        input
+            display: inline-block
+        h3
+            text-align: left
+            color: var(--red)
+            font-style: italic
+            text-decoration: underline
+            font-weight: 300
+            margin-bottom: 44px
+        span
+            margin-right: 20px
+            font-style: italic
+            font-size: 14px
+            display: inline-block
+            line-height: 15px
+            margin-top: 10px
+            height: 20px
+            &:first-child
+                width: 150px

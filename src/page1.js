@@ -2,40 +2,50 @@ import React from "react";
 import { Input } from "./components.js";
 
 function PageOne(props) {
-  const oneFormData = props.ObjOne;
-  const setOneFormData = props.setObjOne;
+  const data = props.ObjOne;
+  const setData = props.setObjOne;
 
   const handleChange = (e) => {
     const target = e.target;
     const name = target.name;
     const value = target.value;
-    setOneFormData({
-      ...oneFormData,
+    setData({
+      ...data,
       [name]: value
     });
   };
 
   React.useEffect(() => {
-    const data = localStorage.getItem("page-one");
-    if (data) {
-      setOneFormData(JSON.parse(data));
+    const localData = localStorage.getItem("page-one");
+    if (localData) {
+      setData(JSON.parse(localData));
     }
   }, []);
 
   React.useEffect(() => {
-    localStorage.setItem("page-one", JSON.stringify(oneFormData));
+    localStorage.setItem("page-one", JSON.stringify(data));
   });
 
+  const inpVals = [['text','first_name','First Name'],['text','last_name','Last Name'],['email','email','E Mail'], ['phone','phone','+995 5__ __ __ __']];
   const errors = props.errors;
+  const inp_group = inpVals.map((elem,indx) => (
+      <Input
+        key = {indx}
+        type = {elem[0]}
+        value = {data[elem[1]]}
+        name = {elem[1]}
+        place = {elem[2]}
+        handle = {e=>{handleChange(e)}}
+        error = {errors[elem[1]]}
+      />
+    )
+  );
   return (
     <div className="block-wrap">
       <div className="block-left">
         <h2>Hey, Rocketeer, what are your coordinates?</h2>
         <div className="input-wrap">
-          <Input type = {'text'} place = {'First Name'} value = {oneFormData.first_name} name = {'first_name'} handle = {handleChange} error = {errors.first_name}/>
-          <Input type = {'text'} place = {'Last Name'} value = {oneFormData.last_name} name = {'last_name'} handle = {handleChange} error = {errors.last_name}/>
-          <Input type = {'email'} place = {'E Mail'} value = {oneFormData.email} name = {'email'} handle = {handleChange} error = {errors.email}/>
-          <Input type = {'phone'} place = {'+995 5__ __ __ __'} value = {oneFormData.phone} name = {'phone'} handle = {handleChange} error = {errors.phone}/>
+          {inp_group}
         </div>
       </div>
       <div className="block-right">

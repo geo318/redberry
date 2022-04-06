@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Input } from "./components.js";
+import { Input, Loader } from "./components.js";
 
 const block = { display: "block" };
 const none = { display: "none" };
@@ -18,9 +18,9 @@ function PageTwo(props) {
   let skillsArr = [...theArray["skills"]].splice(0, skillsAr.length - 1);
 
   React.useEffect(() => {
-    const data = localStorage.getItem("page-two");
-    if (data) {
-      setTheArray(JSON.parse(data));
+    const localData = localStorage.getItem("page-two");
+    if (localData) {
+      setTheArray(JSON.parse(localData));
     }
   }, []);
 
@@ -90,7 +90,7 @@ function PageTwo(props) {
   const vals = [
     skillsArr.map((e, i) => (
       <div className="skillsSelected" key={i}>
-        <div key={`v${i}`}>{looper(data, "id", e["id"], "title")}</div>
+        <div key={`v${i}`}>{data.length > 0? looper(data, "id", e["id"], "title") : <Loader/>}</div>
         <div key={`i${i}`}>{"Years of Experience: " + e["experience"]}</div>
         <div
           key={`r${i}`}
@@ -118,24 +118,12 @@ function PageTwo(props) {
           <h2>Tell us about your skills</h2>
           <div className="skillset">
             <div className="dropIt">
-              <input
-                type="text"
-                name="select"
-                value={value}
-                readOnly
-                onClick={menux}
-              />
+              <Input type = {'text'} value = {value} name = {'select'} click = {menux} isReadOnly = {true}/>
               <div style={Display} className="drop">
                 <div>
                   {data.map((item) => (
                     <div key={item.id}>
-                      <input
-                        key={`i${item.id}`}
-                        id={item.id}
-                        onClick={(e) => {selectIt(e); closeIt();}}
-                        value={item.title}
-                        readOnly
-                      />
+                      <Input key={`i${item.id}`} id={item.id} type = {'text'} value = {item.title} click = {(e) => {selectIt(e); closeIt();}} isReadOnly = {true}/>
                     </div>
                   ))}
                 </div>

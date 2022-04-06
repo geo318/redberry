@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Input } from "./components.js";
 
 function PageThree(props) {
-  const threeFormData = props.ObjThree;
-  const setThreeFormData = props.setObjThree;
+  const data = props.ObjThree;
+  const setData = props.setObjThree;
 
   const DisplayVals = {
     had_covid : {display: "none"},
@@ -13,62 +13,62 @@ function PageThree(props) {
   const [Display, setDisplay] = useState(DisplayVals);
 
   const menux = (e) => {
-    let show;
-    e.target.value === 'true' ? show = 'block' : show = 'none';
+    let toggle;
+    e.target.value === 'true' ? toggle = 'block' : toggle = 'none';
     setDisplay({
       ...Display,
-      [e.target.name]: {display : show}
+      [e.target.name]: {display : toggle}
     })
   };
 
   const handleChange = (e) => {
-    setThreeFormData({
-      ...threeFormData,
+    setData({
+      ...data,
       [e.target.name]: e.target.value
     });
   };
 
   React.useEffect(() => {
-    const data = localStorage.getItem("page-three");
-    const data1 = localStorage.getItem("page-three-1");
-    if (data) {
-      setThreeFormData(JSON.parse(data));
-      console.log(JSON.parse(data));
+    const localData = localStorage.getItem("page-three");
+    const localData1 = localStorage.getItem("page-three-1");
+    if (localData) {
+      setData(JSON.parse(localData));
     }
-    if (data1) {
-      setDisplay(JSON.parse(data1));
+    if (localData1) {
+      setDisplay(JSON.parse(localData1));
     }
   }, []);
 
   React.useEffect(() => {
-    localStorage.setItem("page-three", JSON.stringify(threeFormData));
+    localStorage.setItem("page-three", JSON.stringify(data));
     localStorage.setItem("page-three-1", JSON.stringify(Display));
   });
 
   const inpVals = [
     ['radio','work_preference',['From_Sairme_Office','From_Home','Hybrid'],'how would you prefer to work?','lb'],
-    ['radio','had_covid',['true','false'],'Did you contact covid 19? :(','lb'],
+    ['radio','had_covid',[true,false],'Did you contact covid 19? :(','lb'],
     ['date','had_covid_at',['had_covid_at'],'When?',Display.had_covid],
-    ['radio','vaccinated',['true','false'],'Have you been vaccinated?','lb'],
+    ['radio','vaccinated',[true,false],'Have you been vaccinated?','lb'],
     ['date','vaccinated_at',['vaccinated_at'],'When did you get your last covid vaccine?',Display.vaccinated]
   ];
-
+  console.log(data)
   const inp_group = inpVals.map((elem,indx) => (
-    <div>
-      {typeof elem[3] === 'string' ? <p style = {elem[0] === 'date' ? elem[4] : null}>{elem[3]}</p> : null}
+    <div key = {'div' + indx}>
+      {typeof elem[3] === 'string' ? <p key = {'p' + indx} style = {elem[0] === 'date' ? elem[4] : null}>{elem[3]}</p> : null}
       {
         elem[2].map((val,i) => {
           return (
             <Input 
-              keys = {indx + i}
+              render = {'input'}
+              key = {indx + i}
               id = {`${val}`}
               type = {elem[0]}
               cls = {elem[0]}
-              value = {elem[0] === 'radio'? val : threeFormData[elem[1]]}
+              value = {elem[0] === 'radio'? val : data[elem[1]]}
               name = {elem[1]}
-              handle = {(e)=>{elem[2][0] === 'true' ? handleChange(e) : handleChange(e); menux(e);}}
-              label = {elem[4] ? val === 'true' ? 'Yes' : val === 'false' ? 'No' : elem[0] === 'radio' ? `${val}` : null : null}
-              checked = {elem[0] === 'radio' ? threeFormData[elem[1]] === val : null}
+              handle = {(e)=>{elem[2][0] === true ? handleChange(e) : handleChange(e); menux(e);}}
+              label = {elem[4] ? val === true ? 'Yes' : val === false ? 'No' : elem[0] === 'radio' ? `${val}` : null : null}
+              checked = {elem[0] === 'radio' ? typeof elem[2][0] === 'boolean' ? JSON.parse(data[elem[1]]) === val : data[elem[1]] === val : null}
               style = {elem[0] === 'date' ? elem[4] : null}
             />
           )

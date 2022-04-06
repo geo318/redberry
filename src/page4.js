@@ -1,44 +1,75 @@
 import React, { useState } from "react";
-
-const block = { display: "block" };
-const none = { display: "none" };
+import { Input } from "./components.js";
 
 function PageFour(props) {
-  const [Display, setDisplay] = useState(none);
-
-  const fourFormData = props.ObjFour;
-  const setFourFormData = props.setObjFour;
+  const data = props.ObjFour;
+  const setData = props.setObjFour;
+  const DisplayVals = {
+    devtalk_topic : {display: "none"}
+  }
+  const [Display, setDisplay] = useState(DisplayVals);
 
   const handleChange = (e) => {
-    const target = e.target;
-    const name = target.name;
-    const value = target.value;
-    setFourFormData({
-      ...fourFormData,
-      [name]: value
+    setData({
+      ...data,
+      [e.target.name]: e.target.value
     });
   };
 
   React.useEffect(() => {
-    console.log(fourFormData);
-    const data4 = localStorage.getItem("page-Four");
-    const data = localStorage.getItem("page-Four-1");
-    if (data4) {
-      setFourFormData(JSON.parse(data4));
+    const localData = localStorage.getItem("page-Four");
+    const localData1 = localStorage.getItem("page-Four-1");
+    if (localData) {
+      setData(JSON.parse(localData));
     }
-    if (data4) {
-      setDisplay(JSON.parse(data));
+    if (localData1) {
+      setDisplay(JSON.parse(localData1));
     }
   }, []);
 
   React.useEffect(() => {
-    localStorage.setItem("page-Four", JSON.stringify(fourFormData));
+    localStorage.setItem("page-Four", JSON.stringify(data));
     localStorage.setItem("page-Four-1", JSON.stringify(Display));
   });
 
   const menux = (e) => {
-    return e.target.value === "true" ? setDisplay(block) : setDisplay(none);
+    let toggle;
+    e.target.value === 'true' ? toggle = 'block' : e.target.value === 'false' ? toggle = 'none' : toggle = null;
+    setDisplay({
+      devtalk_topic: {display : toggle}
+    })
   };
+
+  const inpVals = [
+    [['input','radio'],'will_organize_devtalk',[true,false],'Would you attend Devtalks and maybe also organize your own?','lb'],
+    [['textarea','func'],'devtalk_topic',['devtalk_topic'],'What would you speak about at Devtalk?','I would...', Display.devtalk_topic],
+    [['textarea'],'something_special',['something_special'],'Tell us something special','I...']
+  ];
+
+  const inp_group = inpVals.map((elem,indx,arr) => (
+    <div key = {indx+'div'}>
+      { typeof elem[3] === 'string' ? <p key = {'p' + indx} style = {elem[0] === 'date' ? elem[4] : null}>{elem[3]}</p> : null }
+      { elem[2].map((val,i) => {
+        return (
+          <Input
+            render = {elem[0][0]}
+            key = {indx + i + 'rend'}
+            id = {`${val}`}
+            type = {elem[0][1]}
+            cls = {elem[0][1]}
+            value = {elem[0][1] === 'radio'? val : data[elem[1]]}
+            name = {elem[1]}
+            place = {elem[4]}
+            handle = {(e)=>{elem[2][0] !== true ? handleChange(e) : handleChange(e); menux(e);}}
+            label = {elem[4] ? val === true ? 'Yes' : val === false ? 'No' : elem[0] === 'radio' ? `${val}` : null : null}
+            checked = {elem[0] === 'radio' ? typeof elem[2][0] === 'boolean' ? JSON.parse(data[elem[1]]) === val : data[elem[1]] === val : null}
+            style = {elem[0][1] === 'func' ? elem[5] : null}
+            isReadOnly = {false}
+          />
+        )})
+      }
+    </div>
+  ));
 
   return (
     <>
@@ -46,57 +77,7 @@ function PageFour(props) {
         <div className="block-left">
           <h2>What about you?</h2>
           <div className="radio-wrap none">
-            <p>Would you attend Devtalks and maybe also organize your own?</p>
-            <div className="radio">
-              <input
-                type="radio"
-                id="yes"
-                name="will_organize_devtalk"
-                value="true"
-                onChange={(e) => {
-                  handleChange(e);
-                  menux(e);
-                }}
-                checked={fourFormData.will_organize_devtalk === "true"}
-              />
-              <label htmlFor="yes">Yes</label>
-            </div>
-            <div className="radio">
-              <input
-                type="radio"
-                id="no"
-                name="will_organize_devtalk"
-                value="false"
-                onChange={(e) => {
-                  handleChange(e);
-                  menux(e);
-                }}
-                checked={fourFormData.will_organize_devtalk === "false"}
-              />
-              <label htmlFor="no">No</label>
-            </div>
-          </div>
-          <div>
-            <div className="radio-wrap none" style={Display}>
-              <p>What would you speak about at Devtalk?</p>
-              <textarea
-                placeholder="I would..."
-                name="devtalk_topic"
-                value={fourFormData.devtalk_topic}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-          <div>
-            <div className="radio-wrap none">
-              <p>Tell us something special</p>
-              <textarea
-                placeholder="I..."
-                name="something_special"
-                value={fourFormData.something_special}
-                onChange={handleChange}
-              />
-            </div>
+            {inp_group}
           </div>
         </div>
         <div className="block-right">
