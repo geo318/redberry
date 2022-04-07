@@ -46,9 +46,9 @@ function PageThree(props) {
 
   const inpVals = [
     ['radio','work_preference',['From_Sairme_Office','From_Home','Hybrid'],'how would you prefer to work?','lb'],
-    ['radio','had_covid',[true,false],'Did you contact covid 19? :(','lb'],
+    ['radio','had_covid',['true','false'],'Did you contact covid 19? :(','lb'],
     ['date','had_covid_at',['had_covid_at'],'When?',Display.had_covid],
-    ['radio','vaccinated',[true,false],'Have you been vaccinated?','lb'],
+    ['radio','vaccinated',['true','false'],'Have you been vaccinated?','lb'],
     ['date','vaccinated_at',['vaccinated_at'],'When did you get your last covid vaccine?',Display.vaccinated]
   ];
 
@@ -66,9 +66,9 @@ function PageThree(props) {
               cls = {elem[0]}
               value = {elem[0] === 'radio'? val : data[elem[1]]}
               name = {elem[1]}
-              handle = {(e)=>{elem[2][0] === true ? handleChange(e) : handleChange(e); menux(e);}}
-              label = {elem[4] ? val === true ? 'Yes' : val === false ? 'No' : elem[0] === 'radio' ? `${val}` : null : null}
-              checked = {elem[0] === 'radio' ? typeof elem[2][0] === 'boolean' ? JSON.parse(data[elem[1]]) === val : data[elem[1]] === val : null}
+              handle = {(e)=>{elem[2][0] === 'true' ? handleChange(e) : handleChange(e); menux(e);}}
+              label = {elem[4] ? val === 'true' ? 'Yes' : val === 'false' ? 'No' : elem[0] === 'radio' ? `${val}` : null : null}
+              checked = {elem[0] === 'radio' ? data[elem[1]] === val : null}
               style = {elem[0] === 'date' ? elem[4] : null}
             />
           )

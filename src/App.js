@@ -12,7 +12,7 @@ import { Submitted, Submit } from "./submits.js";
 function App() {
   const [startPage, setPage] = useState(0);
 
-  const pageOneVals = { first_name: null, last_name: null, email: null, phone: null };
+  const pageOneVals = { first_name: '', last_name: '', email: '', phone: '' };
   const [oneFormData, setOneFormData] = useState(pageOneVals);
   const [formError1, setFormError1] = useState({});
 
@@ -28,20 +28,20 @@ function App() {
   //window.history.pushState({page : startPage},null,null); <== added this to next page (next()) function
 
   const pageThreeVals = {
-    work_preference: null,
-    had_covid: null,
-    had_covid_at: null,
-    vaccinated: null,
-    vaccinated_at: null
+    work_preference: '',
+    had_covid: '',
+    had_covid_at: '',
+    vaccinated: '',
+    vaccinated_at: ''
   };
 
   const [turnThree, setTurnThree] = useState("0");
   const [threeFormData, setThreeFormData] = useState(pageThreeVals);
 
   const pageFourVals = {
-    will_organize_devtalk: null,
-    devtalk_topic: null,
-    something_special: null
+    will_organize_devtalk: '',
+    devtalk_topic: '',
+    something_special: ''
   };
   const [turnFour, setTurnFour] = useState("0");
   const [fourFormData, setFourFormData] = useState(pageFourVals);

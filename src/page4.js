@@ -41,7 +41,7 @@ function PageFour(props) {
   };
 
   const inpVals = [
-    [['input','radio'],'will_organize_devtalk',[true,false],'Would you attend Devtalks and maybe also organize your own?','lb'],
+    [['input','radio'],'will_organize_devtalk',['true','false'],'Would you attend Devtalks and maybe also organize your own?','lb'],
     [['textarea','func'],'devtalk_topic',['devtalk_topic'],'What would you speak about at Devtalk?','I would...', Display.devtalk_topic],
     [['textarea'],'something_special',['something_special'],'Tell us something special','I...']
   ];
@@ -61,8 +61,8 @@ function PageFour(props) {
             name = {elem[1]}
             place = {elem[4]}
             handle = {(e)=>{elem[2][0] !== true ? handleChange(e) : handleChange(e); menux(e);}}
-            label = {elem[4] ? val === true ? 'Yes' : val === false ? 'No' : elem[0] === 'radio' ? `${val}` : null : null}
-            checked = {elem[0] === 'radio' ? typeof elem[2][0] === 'boolean' ? JSON.parse(data[elem[1]]) === val : data[elem[1]] === val : null}
+            label = {elem[4] ? val === 'true' ? 'Yes' : val === 'false' ? 'No' : elem[0] === 'radio' ? `${val}` : null : null}
+            checked = {elem[0][1] === 'radio' ? data[elem[1]] === val : null}
             style = {elem[0][1] === 'func' ? elem[5] : null}
             isReadOnly = {false}
           />

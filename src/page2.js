@@ -17,14 +17,14 @@ function PageTwo(props) {
   const skillsAr = theArray.skills;
   let skillsArr = [...theArray["skills"]].splice(0, skillsAr.length - 1);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const localData = localStorage.getItem("page-two");
     if (localData) {
       setTheArray(JSON.parse(localData));
     }
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     localStorage.setItem("page-two", JSON.stringify(theArray));
     if (theArray["skills"].length >= 2) {
       props.setError("");
