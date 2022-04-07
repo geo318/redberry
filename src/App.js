@@ -139,18 +139,15 @@ function App() {
   const isOkFour = () => {
     if (
       fourFormData.will_organize_devtalk !== "" &&
-      fourFormData.something_special !== ""
-    ) {
-      if (
-        fourFormData.will_organize_devtalk === "false" ||
+      fourFormData.something_special !== "" &&
+      fourFormData.will_organize_devtalk === "false" ||
         (fourFormData.will_organize_devtalk === "true" &&
           fourFormData.devtalk_topic !== "")
-      ) {
+    ) {
         setTurnFour("1");
-      }
-    } else {
+      } else {
       setTurnFour("0");
-    }
+      }
   };
 
   React.useEffect(() => {
